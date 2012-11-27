@@ -120,7 +120,7 @@ private:
 	size_t _nrBufs;
 	int detectCodepage(char* buf, size_t len);
 
-	bool loadFileData(Document doc, const TCHAR * filename, Utf8_16_Read * UnicodeConvertor, LangType language, int & encoding, formatType *pFormat = NULL);
+	bool loadFileData(Document doc, const TCHAR * filename, Utf8_16_Read * UnicodeConvertor, LangType language, int & encoding, int & tabSize, formatType *pFormat = NULL);
 };
 
 #define MainFileManager FileManager::getInstance()
@@ -225,6 +225,14 @@ public :
 	void setEncoding(int encoding) {
 		_encoding = encoding;
         doNotify(BufferChangeUnicode | BufferChangeDirty);
+	};
+
+	int getTabSize() const {
+		return _tabSize;
+	};
+
+	void setTabSize(int tabSize) {
+		_tabSize = tabSize;
 	};
 
 	DocFileStatus getStatus() const {
@@ -344,6 +352,7 @@ private :
 	formatType _format;
 	UniMode _unicodeMode;
 	int _encoding;
+	int _tabSize;
 	bool _isUserReadOnly;
 	bool _needLexer;	//initially true
 	//these properties have to be duplicated because of multiple references

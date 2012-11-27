@@ -2046,7 +2046,7 @@ LRESULT Notepad_plus::process(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lPa
 		case NPPM_INTERNAL_SETTING_TAB_REPLCESPACE:
 		case NPPM_INTERNAL_SETTING_TAB_SIZE:
 		{
-            _pEditView->setTabSettings(_pEditView->getCurrentBuffer()->getCurrentLang());
+            _pEditView->setTabSettings();
 			break;
 		}
 
